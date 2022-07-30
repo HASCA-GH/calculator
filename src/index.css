@@ -81,7 +81,8 @@ button:hover {
   color: whitesmoke;
   background-color: var(--primary-color);
   margin: 0;
-  padding: 0;
+  padding: 0px 25px;
+    /* margin-right: 5px; */
 }
 
 .operators1 {
