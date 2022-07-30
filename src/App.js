@@ -1,12 +1,4 @@
 import {useState} from 'react';
-// import './App.css';
-
-// {id: "clear", value: "AC"},
-// {id: "divide", value: "/"},
-// {id: "multiply", value: "X"},
-// {id: "subtract", value: "-"},
-// {id: "add", value: "+"},
-// {id: "equals", value: "="},
 
 const misbotones = [
 	{id: "seven", value: 7},
@@ -25,11 +17,6 @@ function App() {
 	const [miOutput, setMiOutput] = useState("");
 
 	const updateValueCalc = value => {
-		// console.log('miInput : ',  miInput);
-		// console.log('miInput Slice (1): ',  miInput.slice(1));
-		// console.log('Value: ',  value);
-		// console.log('!operators.includes(value)', !operators.includes(value))
-
 		if ((operators.includes(value) && miInput === '') || 
 			(operators.includes(value) && operators.includes(miInput.slice(-1))) ||
 			( miInput === '0' && value === '0'  )) 
@@ -37,37 +24,33 @@ function App() {
 			return;	
 		}
 		
-		// setMidisplay(midisplay + value);
 		setMiinput(miInput + value);
-		// setmiInput(miInput + value.toString());
 
 		if (!operators.includes(value)) {
-			// setMiOutput(eval(miInput + value).toString());
 			setMiOutput(value);
 		}
 		
 	}
 
 	const totalCalc = () => {
-		console.log("miInput.slice(2): ", miInput.slice(2));
-		console.log("miInput.slice(0,1): ", miInput.slice(0,1));
-		console.log("miInput.slice(1,2): ", miInput.slice(1,2));
-		console.log("miInput : ", miInput);
-		console.log("miInput lenght : ", miInput.length);
-		console.log("miInput.length-1:", miInput.length-1) 
+		// console.log("miInput.slice(2): ", miInput.slice(2));
+		// console.log("miInput.slice(0,1): ", miInput.slice(0,1));
+		// console.log("miInput.slice(1,2): ", miInput.slice(1,2));
+		// console.log("miInput : ", miInput);
+		// console.log("miInput lenght : ", miInput.length);
+		// console.log("miInput.length-1:", miInput.length-1) 
 
 		const xx = miInput.toString();
 		console.log(xx)
 		console.log("xxxx slice :", xx.slice(1,xx.length))
 
 		if (miInput.slice(0,1) ==="0" && miInput.slice(1,2) !=='.') {
-			// setMiOutput(eval(miInput.slice(1,miInput.length-1)).toString());
-			setMiOutput(eval(xx.slice(1,xx.length)) );
+			setMiOutput(eval(xx.slice(1,xx.length)));
 			setMiinput(xx.slice(1,xx.length));
 		}
 		else {
-			setMiOutput(eval(miInput).toString());
-			// setMiinput(miInput + "=" + eval(miInput).toString());
+
+			eval(miInput) % 1 != 0 ? setMiOutput(eval(miInput).toFixed(4)) : setMiOutput(eval(miInput));
 		}
 	}
 
